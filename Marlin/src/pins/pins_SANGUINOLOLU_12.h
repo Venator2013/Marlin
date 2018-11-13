@@ -37,5 +37,7 @@
   #define BOARD_NAME "Sanguinololu 1.2"
 #endif
 
+#define IS_EASY3DMAKER
+
 #define SANGUINOLOLU_V_1_2
 #include "pins_SANGUINOLOLU_11.h"

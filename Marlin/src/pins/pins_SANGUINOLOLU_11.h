@@ -71,21 +71,30 @@
 //
 #define X_STEP_PIN         15
 #define X_DIR_PIN          21
+#define X_CS_PIN           28 //A3
+
 
 #define Y_STEP_PIN         22
 #define Y_DIR_PIN          23
+#define Y_CS_PIN           29 //A2
+
 
 #define Z_STEP_PIN          3
 #define Z_DIR_PIN           2
+#define Z_CS_PIN           30 //A1
 
 #define E0_STEP_PIN         1
 #define E0_DIR_PIN          0
+#define E0_CS_PIN          31 //A0
 
 //
 // Temperature Sensors
 //
 #define TEMP_0_PIN          7   // Analog Input (pin 33 extruder)
 #define TEMP_BED_PIN        6   // Analog Input (pin 34 bed)
+
+
+#define FAN_PIN           4  
 
 //
 // Heaters / Fans
@@ -100,10 +109,6 @@
   #define Z_ENABLE_PIN     26
   #define E0_ENABLE_PIN    14
 
-  #if !defined(FAN_PIN) && ENABLED(LCD_I2C_PANELOLU2)
-    #define FAN_PIN         4   // Uses Transistor1 (PWM) on Panelolu2's Sanguino Adapter Board to drive the fan
-  #endif
-
 #else
 
   #define HEATER_BED_PIN   14   // (bed)
@@ -112,10 +117,6 @@
   #define Z_ENABLE_PIN     -1
   #define E0_ENABLE_PIN    -1
 
-#endif
-
-#if !defined(FAN_PIN) && (MB(AZTEEG_X1) || MB(STB_11) || ENABLED(IS_MELZI))
-  #define FAN_PIN           4   // Works for Panelolu2 too
 #endif
 
 //
@@ -129,7 +130,7 @@
  * Sanguino libraries! See #368.
  */
 //#define SDSS               24
-#define SDSS               31
+//#define SDSS               31
 
 #if ENABLED(IS_MELZI)
   #define LED_PIN          27
@@ -137,8 +138,8 @@
   #define LCD_BACKLIGHT_PIN 17   // LCD backlight LED
 #endif
 
-#if DISABLED(SPINDLE_LASER_ENABLE) && ENABLED(SANGUINOLOLU_V_1_2) && !BOTH(ULTRA_LCD, NEWPANEL)  // try to use IO Header
-  #define CASE_LIGHT_PIN     4   // MUST BE HARDWARE PWM  - see if IO Header is available
+#if DISABLED(SPINDLE_LASER_ENABLE) && ENABLED(SANGUINOLOLU_V_1_2) && !(ENABLED(ULTRA_LCD) && ENABLED(NEWPANEL))  // try to use IO Header
+ // #define CASE_LIGHT_PIN     4   // MUST BE HARDWARE PWM  - see if IO Header is available
 #endif
 
 /**
@@ -323,3 +324,5 @@
     #define SPINDLE_DIR_PIN          -1   // No pin available on the socket for the direction pin
   #endif
 #endif // SPINDLE_LASER_ENABLE
+
+
