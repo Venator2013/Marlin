@@ -72,15 +72,20 @@
 //
 #define X_STEP_PIN         15
 #define X_DIR_PIN          21
+#define X_CS_PIN           28 //A3
 
 #define Y_STEP_PIN         22
 #define Y_DIR_PIN          23
+#define Y_CS_PIN           29 //A2
 
 #define Z_STEP_PIN          3
 #define Z_DIR_PIN           2
+#define Z_CS_PIN           30 //A1
 
 #define E0_STEP_PIN         1
 #define E0_DIR_PIN          0
+#define E0_CS_PIN          31 //A0
+
 
 //
 // Temperature Sensors
@@ -100,6 +105,8 @@
   #define Y_ENABLE_PIN     14
   #define Z_ENABLE_PIN     26
   #define E0_ENABLE_PIN    14
+
+  #define FAN_PIN           4  
 
   #if !defined(FAN_PIN) && ENABLED(LCD_I2C_PANELOLU2)
     #define FAN_PIN         4   // Uses Transistor1 (PWM) on Panelolu2's Sanguino Adapter Board to drive the fan
